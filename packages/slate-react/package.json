@@ -23,8 +23,9 @@
     "scroll-into-view-if-needed": "^2.2.20"
   },
   "devDependencies": {
-    "slate": "^0.60.0",
-    "slate-hyperscript": "^0.60.0"
+    "slate": "^0.59.0",
+    "slate-history": "^0.59.0",
+    "slate-hyperscript": "^0.59.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
