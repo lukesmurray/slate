@@ -167,11 +167,23 @@ export const Editable = (props: EditableProps) => {
       hasDomSelectionInEditor = true
     }
 
+    const selectionRect =
+      domSelection.rangeCount > 0
+        ? domSelection.getRangeAt(0).getBoundingClientRect()
+        : undefined
+    const isZeroRect =
+      selectionRect !== undefined &&
+      ['x', 'y', 'bottom', 'top', 'left', 'right'].every(
+        prop => selectionRect[prop] === 0
+      )
+
     // If the DOM selection is in the editor and the editor selection is already correct, we're done.
+    // and we don't have a zero rect
     if (
       hasDomSelection &&
       hasDomSelectionInEditor &&
       selection &&
+      !isZeroRect &&
       Range.equals(ReactEditor.toSlateRange(editor, domSelection), selection)
     ) {
       return
